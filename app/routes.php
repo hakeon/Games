@@ -11,22 +11,16 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+// Bind route parameters.
+Route::model('game', 'Game');
 
+// Show pages.
+Route::get('/', 'GamesController@index');
+Route::get('/create', 'GamesController@create');
+Route::get('/edit/{game}', 'GamesController@edit');
+Route::get('/delete/{game}', 'GamesController@delete');
 
-// Database test route
-Route::get('mysql-test', function() {
-
-    # Print environment
-    echo 'Environment: '.App::environment().'<br>';
-
-    # Use the DB component to select all the databases
-    $results = DB::select('SHOW DATABASES;');
-
-    # If the "Pre" package is not installed, you should output using print_r instead
-    print_r($results);
-
-});
+// Handles form submissions.
+Route::post('/create', 'GamesController@handleCreate');
+Route::post('/edit', 'GamesController@handleEdit');
+Route::post('/delete', 'GamesController@handleDelete');
