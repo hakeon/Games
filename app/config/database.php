@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'games',
 			'username'  => 'root',
-			'password'  => 'Malina01',
+			'password'  => 'root',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

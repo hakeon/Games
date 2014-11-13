@@ -15,6 +15,7 @@ class CreateGames extends Migration {
 		Schema::create('games', function($table)
         {
             $table->increments('id');
+            $table->timestamps();
             $table->string('title', 128);
             $table->string('publisher', 128);
             $table->boolean('complete');
