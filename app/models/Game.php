@@ -4,5 +4,5 @@
 
 class Game extends Eloquent
 {
-        
+
 }
