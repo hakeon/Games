@@ -7,7 +7,8 @@ class GamesController extends BaseController
     public function index()
     {
         // Display a list of games
-        return View::make('index');
+        $games = Game::all();
+        return View::make('index', compact('games'));
     }
 
     public function create()
