@@ -21,9 +21,9 @@ class GamesController extends BaseController
     {
         // Handles the create form submission
         $game = new Game;
-        $game->title = Input::get('title');
+        $game->title     = Input::get('title');
         $game->publisher = Input::get('publisher');
-        $game->complete = Input::has('complete');
+        $game->complete  = Input::has('complete');
         $game->save();
 
         return Redirect::action('GamesController@index');
@@ -32,12 +32,19 @@ class GamesController extends BaseController
     public function edit(Game $game)
     {
         // Display the edit game form
-        return View::make('edit');
+        return View::make('edit', compact('game'));
     }
 
     public function handleEdit()
     {
         // Handles the edit form submission
+        $game = Game::findOrFail(Input::get('id'));
+        $game->title     = Input::get('title');
+        $game->publisher = Input::get('publisher');
+        $game->complete  = Input::has('complete');
+        $game->save();
+
+        return Redirect::action('GameController@index');
     }
 
     public function delete()
