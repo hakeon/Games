@@ -20,6 +20,13 @@ class GamesController extends BaseController
     public function handleCreate()
     {
         // Handles the create form submission
+        $game = new Game;
+        $game->title = Input::get('title');
+        $game->publisher = Input::get('publisher');
+        $game->complete = Input::has('complete');
+        $game->save();
+
+        return Redirect::action('GamesController@index');
     }
 
     public function edit(Game $game)
